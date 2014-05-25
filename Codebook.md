@@ -39,41 +39,41 @@ In the run_analysis.R file are contained all the scripts made for this course pr
 
 * FOR INTERNAL USE: These are the base scripts used by functions for external use. This is an intent to make more readable the script work for an R programmer who tries to understand them.
 
-### Functions For External Use - Transformation details are included
+#### Functions For External Use - Transformation details are included
 
-* GetTidyHARData(): Returns the final tidy data set containing the average value for mean and standard deviation measures fields. The data set contains three extra columns to identify the records: Subject, Activity and Group Partition. Group Partition is used to describe if the record belongs to a test data set or train data set. This function uses the internal function named HARMeanAndStdData wich returns a data frame with detail data (not average data) of the same columns() we have in final tidy data set. The steps done are next:
+GetTidyHARData(): Returns the final tidy data set containing the average value for mean and standard deviation measures fields. The data set contains three extra columns to identify the records: Subject, Activity and Group Partition. Group Partition is used to describe if the record belongs to a test data set or train data set. This function uses the internal function named HARMeanAndStdData wich returns a data frame with detail data (not average data) of the same columns() we have in final tidy data set. The steps done are next:
 
-** Gets HAR dataset with key (Subject, Activity and GroupPartition), mean and std columns.
-** Calculates average for mean and std columns grouped by key columns: Subject, Activity and GroupPartition.
+* Gets HAR dataset with key (Subject, Activity and GroupPartition), mean and std columns using HARMeanAndStdData() function.
+* Calculates average for mean and std columns grouped by key columns: Subject, Activity and GroupPartition.
 
-* WriteTableToTxt(): This function writes a dataset into a new .txt file. This function has two parameters: (a) filename, name of the .txt file to write in working directory, (b) dataset: data set to be written into .txt file.
+WriteTableToTxt(): This function writes a dataset into a new .txt file. This function has two parameters: (a) filename, name of the .txt file to write in working directory, (b) dataset: data set to be written into .txt file.
 
-### Functions For Internal Use - Transformation details are included
+#### Functions For Internal Use - Transformation details are included
 
-* HARDataBySetname(): This function returns a data frame with data was obtained from getdata-projectfiles-UCI HAR Dataset.zip according to the setname passed as parameter ("train" or "test"). This function requires 'plyr' package to be run. The steps done are next:
+HARDataBySetname(): This function returns a data frame with data was obtained from getdata-projectfiles-UCI HAR Dataset.zip according to the setname passed as parameter ("train" or "test"). This function requires 'plyr' package to be run. The steps done are next:
 
-** Reading subject entries from txt into subject variable.
-** Reading activity entries from txt into activity variable.
-** Consolidating subject and activity into temp.data1 variable.
-** Reading activity label entries from txt into activity.label variable.
-** Join temp.data1 and activity.label into temp.data2 and dropping ActivityID column.
-** Adding new GroupPartition column to differenciate datasets (test and train).
-** Reading feature label entries from txt into a vector variable.
-** Reading x data entries from txt into x.data variable and naming it as features.
-** Consolidating temp.data2 and x.test.data into result.data variable.
+* Reading subject entries from txt into subject variable.
+* Reading activity entries from txt into activity variable.
+* Consolidating subject and activity into temp.data1 variable.
+* Reading activity label entries from txt into activity.label variable.
+* Join temp.data1 and activity.label into temp.data2 and dropping ActivityID column.
+* Adding new GroupPartition column to differenciate datasets (test and train).
+* Reading feature label entries from txt into a vector variable.
+* Reading x data entries from txt into x.data variable and naming it as features.
+* Consolidating temp.data2 and x.test.data into result.data variable.
 
-* HARFullData(): This function returns a full data set containing data for test and train experiments. Uses the HARDataBySetname() function described previously. This function has no parameters. The steps done are next:
+HARFullData(): This function returns a full data set containing data for test and train experiments. Uses the HARDataBySetname() function described previously. This function has no parameters. The steps done are next:
 
-** Loading test and train datasets.
-** Row binding for test and train datasets into result.data data frame variable.
+* Loading test and train datasets using HARDataBySetname() function.
+* Row binding for test and train datasets into result.data data frame variable.
 
-* HARMeanAndStdData(): This function returns only mean and standard deviation column fields obtained from HARFullData() function. This data set has the record for test and train data. This function has no parameters. The steps done are next:
+HARMeanAndStdData(): This function returns only mean and standard deviation column fields obtained from HARFullData() function. This data set has the record for test and train data. This function has no parameters. The steps done are next:
 
-** Gets the full Human Activity Recognition (HAR) dataset.
-** Getting key columns from dataset: Subject, Activity and GroupPartition.
-** Getting mean measure columns (this doesn't include meanFreq columns).
-** Getting standard deviation measure columns.
-** Column binding for key columns, mean measure columns and standard deviation measure columns.
+* Gets the full Human Activity Recognition (HAR) dataset using HARFullData() function.
+* Getting key columns from dataset: Subject, Activity and GroupPartition.
+* Getting mean measure columns (this doesn't include meanFreq columns).
+* Getting standard deviation measure columns.
+* Column binding for key columns, mean measure columns and standard deviation measure columns.
 
 #### License:
 
