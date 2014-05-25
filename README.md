@@ -1,10 +1,13 @@
 ## GETTING AND CLEANING DATA - COURSE PROJECT
 
 ====================================================================
-Author: bqnovaq (Brian Koo Labrin)
+
+Author: bqnovaq (Brian Koo Labrin) | bkoo99@hotmail.com
+
 Company: Kaits Consulting Group
+
 Date: May 25, 2014
-bkoo99@hotmail.com
+
 ====================================================================
 
 ### Summary
